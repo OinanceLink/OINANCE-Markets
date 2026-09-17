@@ -2,6 +2,11 @@
 // OINANCE MARKETS V1
 // =====================================
 
+
+// =====================================
+// CRYPTOCURRENCY DATA
+// =====================================
+
 const crypto = [
     ["Bitcoin", "BTC", "$108,450.00", "+2.41%", "$2.15T"],
     ["Ethereum", "ETH", "$4,210.32", "+1.87%", "$507.8B"],
@@ -54,6 +59,11 @@ const crypto = [
     ["Zcash", "ZEC", "$51.30", "+1.72%", "$0.8B"],
     ["Dash", "DASH", "$27.20", "-0.38%", "$0.3B"]
 ];
+
+
+// =====================================
+// STOCK DATA
+// =====================================
 
 const stocks = [
     ["Apple", "AAPL", "$245.18", "+1.24%", "$3.67T"],
@@ -109,9 +119,9 @@ const stocks = [
 ];
 
 
-// -------------------------------------
-// CREATE ROW
-// -------------------------------------
+// =====================================
+// CREATE MARKET ROW
+// =====================================
 
 function createRow(item, number) {
 
@@ -123,13 +133,15 @@ function createRow(item, number) {
 
     const movement =
         change.startsWith("-")
-        ? "negative"
-        : "positive";
+            ? "negative"
+            : "positive";
 
     return `
         <div class="market-row generated-row">
 
-            <span>${String(number).padStart(2, "0")}</span>
+            <span>
+                ${String(number).padStart(2, "0")}
+            </span>
 
             <div class="asset">
 
@@ -150,118 +162,367 @@ function createRow(item, number) {
                 ${change}
             </span>
 
-            <span>${marketCap}</span>
+            <span>
+                ${marketCap}
+            </span>
 
         </div>
     `;
 }
 
 
-// -------------------------------------
-// LOAD MARKETS
-// -------------------------------------
+// =====================================
+// LOAD CRYPTO
+// =====================================
 
-function loadMarkets() {
+function loadCrypto() {
 
-    const boxes = document.querySelectorAll(".market-box");
+    const box =
+        document.querySelector(".crypto-market-box");
 
-    if (boxes.length < 2) {
-        console.log("OINANCE Markets: market boxes not found.");
-        return;
-    }
+    if (!box) return;
 
-    const cryptoBox = boxes[0];
-    const stockBox = boxes[1];
+    const header =
+        box.querySelector(".table-header");
 
-    const cryptoHeader =
-        cryptoBox.querySelector(".table-header");
+    box.innerHTML = "";
 
-    const stockHeader =
-        stockBox.querySelector(".table-header");
-
-    cryptoBox.innerHTML = "";
-    stockBox.innerHTML = "";
-
-    cryptoBox.appendChild(cryptoHeader);
-    stockBox.appendChild(stockHeader);
+    box.appendChild(header);
 
     crypto.forEach(function(item, index) {
 
-        cryptoBox.insertAdjacentHTML(
+        box.insertAdjacentHTML(
             "beforeend",
             createRow(item, index + 1)
         );
 
     });
-
-    stocks.forEach(function(item, index) {
-
-        stockBox.insertAdjacentHTML(
-            "beforeend",
-            createRow(item, index + 1)
-        );
-
-    });
-
-    console.log(
-        "OINANCE Markets loaded:",
-        crypto.length,
-        "crypto assets and",
-        stocks.length,
-        "stocks."
-    );
 }
 
 
-// -------------------------------------
+// =====================================
+// LOAD STOCKS
+// =====================================
+
+function loadStocks() {
+
+    const box =
+        document.querySelector(".stock-market-box");
+
+    if (!box) return;
+
+    const header =
+        box.querySelector(".table-header");
+
+    box.innerHTML = "";
+
+    box.appendChild(header);
+
+    stocks.forEach(function(item, index) {
+
+        box.insertAdjacentHTML(
+            "beforeend",
+            createRow(item, index + 1)
+        );
+
+    });
+}
+
+
+// =====================================
+// TOP MOVERS
+// =====================================
+
+function updateTopMovers() {
+
+    const allMarkets =
+        crypto.concat(stocks);
+
+    const sorted =
+        [...allMarkets].sort(function(a, b) {
+
+            const changeA =
+                parseFloat(a[3].replace("%", ""));
+
+            const changeB =
+                parseFloat(b[3].replace("%", ""));
+
+            return changeB - changeA;
+
+        });
+
+
+    const topGainer = sorted[0];
+
+
+    const topLoser =
+        sorted[sorted.length - 1];
+
+
+    const gainerName =
+        document.getElementById("topGainerName");
+
+    const gainerPrice =
+        document.getElementById("topGainerPrice");
+
+    const gainerChange =
+        document.getElementById("topGainerChange");
+
+
+    const loserName =
+        document.getElementById("topLoserName");
+
+    const loserPrice =
+        document.getElementById("topLoserPrice");
+
+    const loserChange =
+        document.getElementById("topLoserChange");
+
+
+    if (topGainer) {
+
+        gainerName.textContent =
+            topGainer[0];
+
+        gainerPrice.textContent =
+            topGainer[2];
+
+        gainerChange.textContent =
+            topGainer[3];
+
+    }
+
+
+    if (topLoser) {
+
+        loserName.textContent =
+            topLoser[0];
+
+        loserPrice.textContent =
+            topLoser[2];
+
+        loserChange.textContent =
+            topLoser[3];
+
+    }
+
+}
+
+
+// =====================================
+// MARKET TABS
+// =====================================
+
+function setupMarketTabs() {
+
+    const tabs =
+        document.querySelectorAll(".market-tab");
+
+    const cryptoSection =
+        document.getElementById("crypto");
+
+    const stockSection =
+        document.getElementById("stocks");
+
+
+    tabs.forEach(function(tab) {
+
+        tab.addEventListener("click", function() {
+
+            tabs.forEach(function(button) {
+
+                button.classList.remove("active");
+
+            });
+
+
+            this.classList.add("active");
+
+
+            const market =
+                this.dataset.market;
+
+
+            if (market === "crypto") {
+
+                cryptoSection.style.display =
+                    "block";
+
+                stockSection.style.display =
+                    "none";
+
+                cryptoSection.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+
+            else if (market === "stocks") {
+
+                cryptoSection.style.display =
+                    "none";
+
+                stockSection.style.display =
+                    "block";
+
+                stockSection.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+
+            else {
+
+                cryptoSection.style.display =
+                    "block";
+
+                stockSection.style.display =
+                    "block";
+
+                document.getElementById("markets")
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+            }
+
+        });
+
+    });
+
+}
+
+
+// =====================================
 // SEARCH
-// -------------------------------------
+// =====================================
 
 function setupSearch() {
 
     const search =
         document.querySelector(".search-box input");
 
-    if (!search) {
-        console.log("OINANCE Markets: search box not found.");
-        return;
-    }
+
+    if (!search) return;
+
 
     search.addEventListener("input", function() {
 
         const keyword =
             this.value.toLowerCase().trim();
 
+
         const rows =
-            document.querySelectorAll(".generated-row");
+            document.querySelectorAll(
+                ".generated-row"
+            );
+
 
         rows.forEach(function(row) {
 
             const content =
                 row.textContent.toLowerCase();
 
-            if (content.includes(keyword)) {
-                row.style.display = "grid";
-            } else {
-                row.style.display = "none";
-            }
+
+            row.style.display =
+                content.includes(keyword)
+                    ? "grid"
+                    : "none";
 
         });
 
     });
+
 }
 
 
-// -------------------------------------
-// START
-// -------------------------------------
+// =====================================
+// MOBILE MENU
+// =====================================
 
-document.addEventListener("DOMContentLoaded", function() {
+function setupMobileMenu() {
 
-    loadMarkets();
+    const button =
+        document.querySelector(".menu-button");
 
-    setupSearch();
+    const navigation =
+        document.querySelector(".navigation");
 
-    console.log("OINANCE Markets is running.");
 
-});
+    if (!button || !navigation) return;
+
+
+    button.addEventListener("click", function() {
+
+        if (
+            navigation.style.display ===
+            "flex"
+        ) {
+
+            navigation.style.display =
+                "none";
+
+        } else {
+
+            navigation.style.display =
+                "flex";
+
+            navigation.style.flexDirection =
+                "column";
+
+            navigation.style.position =
+                "absolute";
+
+            navigation.style.top =
+                "78px";
+
+            navigation.style.right =
+                "20px";
+
+            navigation.style.background =
+                "#fff";
+
+            navigation.style.padding =
+                "20px";
+
+            navigation.style.border =
+                "1px solid #ddd";
+
+            navigation.style.borderRadius =
+                "10px";
+
+        }
+
+    });
+
+}
+
+
+// =====================================
+// START OINANCE MARKETS
+// =====================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadCrypto();
+
+        loadStocks();
+
+        updateTopMovers();
+
+        setupMarketTabs();
+
+        setupSearch();
+
+        setupMobileMenu();
+
+        console.log(
+            "OINANCE Markets is running."
+        );
+
+    }
+);
