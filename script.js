@@ -1222,6 +1222,55 @@ function loadAssetPage() {
 
 }
 
+// ===============================
+// OINANCE MARKETS LIVE CRYPTO DATA
+// ===============================
+
+const LIVE_CRYPTO_API = "https://YOUR-VERCEL-DOMAIN/api/crypto";
+
+async function loadLiveCryptoData() {
+    try {
+        const response = await fetch(LIVE_CRYPTO_API);
+
+        if (!response.ok) {
+            throw new Error("Live crypto data could not be loaded");
+        }
+
+        const liveData = await response.json();
+
+        if (!Array.isArray(liveData)) {
+            throw new Error("Invalid crypto data received");
+        }
+
+        // Update our existing crypto list with live CoinGecko data
+        liveData.forEach((coin) => {
+            const existingCoin = crypto.find(
+                item =>
+                    item.symbol.toLowerCase() === coin.symbol.toLowerCase()
+            );
+
+            if (existingCoin) {
+                existingCoin.price = coin.current_price;
+                existingCoin.marketCap = coin.market_cap;
+                existingCoin.volume = coin.total_volume;
+                existingCoin.change = coin.price_change_percentage_24h;
+                existingCoin.logo = coin.image;
+            }
+        });
+
+        // Refresh the crypto table
+        loadCrypto();
+
+        // Refresh top movers
+        updateTopMovers();
+
+        console.log("OINANCE Markets: Live crypto data loaded.");
+
+    } catch (error) {
+        console.error("OINANCE Markets:", error);
+    }
+}
+
 
 // ======================================================
 // START EVERYTHING
