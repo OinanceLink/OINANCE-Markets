@@ -359,17 +359,26 @@ body {
 }
 
 .asset-icon {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
     border-radius: 50%;
-    background: #111;
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
-    flex-shrink: 0;
+    overflow: hidden;
+    background: #f1f1ef;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.asset-icon img {
+    width: 26px;
+    height: 26px;
+    max-width: 26px;
+    max-height: 26px;
+    object-fit: contain;
+    display: block;
 }
 
 .asset strong {
