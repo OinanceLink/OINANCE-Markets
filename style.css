@@ -558,3 +558,292 @@ footer > span {
         padding: 40px 20px;
     }
 }
+
+/* ============================= */
+/* ASSET DETAIL PAGE */
+/* ============================= */
+
+.asset-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+.asset-back {
+    margin-bottom: 30px;
+}
+
+.asset-back a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.asset-back a:hover {
+    color: #000;
+}
+
+.asset-hero {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.asset-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.large-asset-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: #111;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.asset-type {
+    margin: 0 0 6px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #888;
+    font-weight: 700;
+}
+
+.asset-heading h2 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.asset-symbol {
+    display: block;
+    margin-top: 5px;
+    color: #777;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.asset-price {
+    text-align: right;
+}
+
+.asset-price strong {
+    display: block;
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.asset-price span {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.asset-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.stat-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.stat-card span {
+    display: block;
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.stat-card strong {
+    font-size: 20px;
+}
+
+.chart-section {
+    margin-top: 40px;
+}
+
+.chart-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.chart-button {
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.chart-button.active {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+.chart-box {
+    height: 400px;
+    margin-top: 15px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.chart-placeholder {
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.chart-line {
+    position: absolute;
+    width: 80%;
+    height: 150px;
+    border-bottom: 3px solid #111;
+    border-radius: 50%;
+    transform: rotate(-5deg);
+    opacity: 0.8;
+}
+
+.about-asset {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.about-asset > div {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.about-asset h3 {
+    font-size: 24px;
+    margin: 5px 0 18px;
+}
+
+.about-asset p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.market-information {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row span {
+    color: #777;
+}
+
+.info-row strong {
+    color: #111;
+}
+
+
+/* ============================= */
+/* MOBILE ASSET PAGE */
+/* ============================= */
+
+@media (max-width: 850px) {
+
+    .asset-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .asset-price {
+        text-align: left;
+    }
+
+    .asset-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-asset {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .asset-page {
+        padding: 25px 16px 60px;
+    }
+
+    .asset-hero {
+        padding: 22px;
+    }
+
+    .large-asset-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 20px;
+    }
+
+    .asset-heading h2 {
+        font-size: 25px;
+    }
+
+    .asset-price strong {
+        font-size: 28px;
+    }
+
+    .asset-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-box {
+        height: 300px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .chart-buttons {
+        flex-wrap: wrap;
+    }
+
+        }
