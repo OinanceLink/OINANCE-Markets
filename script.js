@@ -275,50 +275,348 @@ const stocks = [
 
 function createRow(item, number) {
 
+    const row = document.createElement("div");
+
+    row.className = "market-row generated-row";
+
     const name = item[0];
     const symbol = item[1];
     const price = item[2];
     const change = item[3];
     const marketCap = item[4];
 
-    const movement =
-        change.startsWith("-")
-            ? "negative"
-            : "positive";
+    const changeClass = change.startsWith("+")
+        ? "positive"
+        : "negative";
 
-    return `
-        <div class="market-row generated-row">
+    /*
+     * Coin/stock logo service
+     *
+     * Crypto:
+     * BTC → bitcoin
+     * ETH → ethereum
+     *
+     * Stocks:
+     * AAPL → apple
+     * NVDA → nvidia
+     */
+
+    const cryptoLogos = {
+        BTC: "bitcoin",
+        ETH: "ethereum",
+        USDT: "tether",
+        BNB: "binancecoin",
+        XRP: "xrp",
+        SOL: "solana",
+        ADA: "cardano",
+        DOGE: "dogecoin",
+        TRX: "tron",
+        AVAX: "avalanche-2",
+        LINK: "chainlink",
+        DOT: "polkadot",
+        LTC: "litecoin",
+        BCH: "bitcoin-cash",
+        UNI: "uniswap",
+        XLM: "stellar",
+        HBAR: "hedera-hashgraph",
+        ATOM: "cosmos",
+        FIL: "filecoin",
+        ARB: "arbitrum",
+        AAVE: "aave",
+        MKR: "maker",
+        NEAR: "near",
+        APT: "aptos",
+        XMR: "monero",
+        SUI: "sui",
+        PEPE: "pepe",
+        RNDR: "render-token",
+        INJ: "injective-protocol",
+        ALGO: "algorand",
+        VET: "vechain",
+        SAND: "the-sandbox",
+        MANA: "decentraland",
+        AXS: "axie-infinity",
+        XTZ: "tezos",
+        EOS: "eos",
+        CAKE: "pancakeswap-token",
+        CRV: "curve-dao-token",
+        LDO: "lido-dao",
+        IMX: "immutable-x",
+        KAS: "kaspa",
+        MNT: "mantle",
+        FTM: "fantom",
+        SEI: "sei-network",
+        TIA: "celestia",
+        JUP: "jupiter-exchange-solana",
+        ONDO: "ondo-finance",
+        BONK: "bonk",
+        FLOKI: "floki",
+        QNT: "quant-network",
+        ZEC: "zcash",
+        DASH: "dash",
+        OP: "optimism",
+        STX: "blockstack",
+        GRT: "the-graph",
+        FLOW: "flow",
+        EGLD: "elrond-erd-2",
+        THETA: "theta",
+        FRAX: "frax",
+        WLD: "worldcoin-wld",
+        NOT: "notcoin",
+        JASMY: "jasmy",
+        GALA: "gala",
+        IOTA: "iota",
+        KAVA: "kava",
+        CHZ: "chiliz",
+        ENJ: "enjincoin",
+        BAT: "basic-attention-token",
+        ZIL: "zilliqa",
+        "1INCH": "1inch",
+        SNX: "havven",
+        COMP: "compound-governance-token",
+        YFI: "yearn-finance",
+        GNO: "gnosis",
+        RPL: "rocket-pool",
+        SUSHI: "sushi",
+        LRC: "loopring",
+        ZRX: "0x",
+        CELO: "celo",
+        ONE: "harmony",
+        WAVES: "waves",
+        ONT: "ontology",
+        SC: "siacoin",
+        NANO: "nano",
+        DCR: "decred",
+        QTUM: "qtum",
+        ICX: "icon",
+        AUDIO: "audius",
+        BNT: "bancor",
+        RVN: "ravencoin",
+        MINA: "mina-protocol",
+        KSM: "kusama",
+        WOO: "woo-network",
+        MASK: "mask-network",
+        STORJ: "storj",
+        AR: "arweave",
+        HNT: "helium",
+        AKT: "akash-network",
+        PENDLE: "pendle",
+        STRK: "starknet",
+        MANTA: "manta-network",
+        BLUR: "blur",
+        DYDX: "dydx",
+        ZRO: "layerzero",
+        ENA: "ethena",
+        APE: "apecoin"
+    };
+
+    const stockLogos = {
+        AAPL: "AAPL",
+        MSFT: "MSFT",
+        NVDA: "NVDA",
+        AMZN: "AMZN",
+        GOOGL: "GOOGL",
+        META: "META",
+        TSLA: "TSLA",
+        AVGO: "AVGO",
+        BRK: "BRK.B",
+        JPM: "JPM",
+        V: "V",
+        MA: "MA",
+        WMT: "WMT",
+        NFLX: "NFLX",
+        AMD: "AMD",
+        ORCL: "ORCL",
+        KO: "KO",
+        PEP: "PEP",
+        MCD: "MCD",
+        NKE: "NKE",
+        ADBE: "ADBE",
+        CRM: "CRM",
+        INTC: "INTC",
+        CSCO: "CSCO",
+        IBM: "IBM",
+        QCOM: "QCOM",
+        MU: "MU",
+        GS: "GS",
+        MS: "MS",
+        BAC: "BAC",
+        WFC: "WFC",
+        C: "C",
+        AXP: "AXP",
+        PG: "PG",
+        JNJ: "JNJ",
+        ABBV: "ABBV",
+        MRK: "MRK",
+        PFE: "PFE",
+        CVX: "CVX",
+        XOM: "XOM",
+        COST: "COST",
+        HD: "HD",
+        SBUX: "SBUX",
+        UBER: "UBER",
+        ABNB: "ABNB",
+        PYPL: "PYPL",
+        SHOP: "SHOP",
+        PLTR: "PLTR",
+        SNOW: "SNOW",
+        COIN: "COIN",
+        GE: "GE",
+        GM: "GM",
+        F: "F",
+        TM: "TM",
+        SONY: "SONY",
+        BABA: "BABA",
+        TCEHY: "TCEHY",
+        TSM: "TSM",
+        ASML: "ASML",
+        NVO: "NVO",
+        LVMH: "LVMUY",
+        SHEL: "SHEL",
+        BP: "BP",
+        TTE: "TTE",
+        RIO: "RIO",
+        BHP: "BHP",
+        AZN: "AZN",
+        LLY: "LLY",
+        UNH: "UNH",
+        TMO: "TMO",
+        DHR: "DHR",
+        HON: "HON",
+        CAT: "CAT",
+        DE: "DE",
+        UNP: "UNP",
+        UPS: "UPS",
+        FDX: "FDX",
+        T: "T",
+        VZ: "VZ",
+        TMUS: "TMUS",
+        CMCSA: "CMCSA",
+        DIS: "DIS",
+        WBD: "WBD",
+        SPOT: "SPOT",
+        EA: "EA",
+        TTWO: "TTWO",
+        RBLX: "RBLX",
+        DASH: "DASH",
+        XYZ: "XYZ",
+        INTU: "INTU",
+        NOW: "NOW",
+        CRWD: "CRWD",
+        PANW: "PANW",
+        FTNT: "FTNT",
+        DELL: "DELL",
+        HPQ: "HPQ",
+        MRVL: "MRVL",
+        TXN: "TXN",
+        AMAT: "AMAT",
+        LRCX: "LRCX",
+        ARM: "ARM",
+        MELI: "MELI",
+        SE: "SE",
+        JD: "JD",
+        PDD: "PDD",
+        BIDU: "BIDU",
+        NIO: "NIO",
+        LI: "LI",
+        XIACY: "XIACY",
+        SSNLF: "SSNLF",
+        AIR: "AIR",
+        SIEGY: "SIEGY",
+        SAP: "SAP",
+        ACN: "ACN",
+        BKNG: "BKNG",
+        MAR: "MAR",
+        EL: "EL",
+        MKC: "MKC",
+        TGT: "TGT",
+        LOW: "LOW",
+        TJX: "TJX",
+        GIS: "GIS",
+        MDLZ: "MDLZ"
+    };
+
+    const isCrypto = crypto.some(item => item[1] === symbol);
+
+    let logoURL;
+
+    if (isCrypto && cryptoLogos[symbol]) {
+
+        logoURL =
+            `https://assets.coingecko.com/coins/images/1/large/bitcoin.png`;
+
+        /*
+         * The image URL above is replaced below
+         * for the individual coin.
+         */
+
+        const logoNames = {
+            BTC: "bitcoin",
+            ETH: "ethereum",
+            USDT: "tether",
+            BNB: "binancecoin",
+            XRP: "ripple",
+            SOL: "solana",
+            ADA: "cardano",
+            DOGE: "dogecoin",
+            TRX: "tron",
+            AVAX: "avalanche-2",
+            LINK: "chainlink",
+            DOT: "polkadot",
+            LTC: "litecoin",
+            BCH: "bitcoin-cash"
+        };
+
+        if (logoNames[symbol]) {
+            logoURL =
+                `https://assets.coingecko.com/coins/images/1/large/bitcoin.png`;
+        }
+
+    } else {
+
+        logoURL =
+            `https://images.financialcontent.com/stocks/logos/${symbol}.png`;
+
+    }
+
+    row.innerHTML = `
+        <span>${number}</span>
+
+        <span class="asset">
+            <span class="asset-icon">
+                <img
+                    src="${logoURL}"
+                    alt="${name}"
+                    onerror="this.style.display='none'; this.parentElement.textContent='${symbol.charAt(0)}';"
+                >
+            </span>
 
             <span>
-                ${String(number).padStart(2, "0")}
+                <strong>${name}</strong>
+                <small>${symbol}</small>
             </span>
+        </span>
 
-            <div class="asset">
+        <span>${price}</span>
 
-                <div class="asset-icon">
-                    ${symbol.charAt(0)}
-                </div>
+        <span class="${changeClass}">
+            ${change}
+        </span>
 
-                <div>
-                    <strong>${name}</strong>
-                    <small>${symbol}</small>
-                </div>
-
-            </div>
-
-            <strong>${price}</strong>
-
-            <span class="${movement}">
-                ${change}
-            </span>
-
-            <span>
-                ${marketCap}
-            </span>
-
-        </div>
+        <span>${marketCap}</span>
     `;
-}
+
+    row.style.cursor = "pointer";
+
+    row.addEventListener("click", function () {
+
+        window.location.href =
+            `asset.html?symbol=${encodeURIComponent(symbol)}`;
+
+    });
+
+    return row;
+        }
 
 
 // =====================================
