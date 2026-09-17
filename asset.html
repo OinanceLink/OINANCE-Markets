@@ -1,226 +1,572 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Asset | OINANCE Markets</title>
 
-    <title>Asset | OINANCE Markets</title>
+<link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="style.css">
-</head>
+</head><body><header class="header"><div class="logo-area">
 
-<body>
+    <div class="logo-image">
+        <img src="IMG_20260916_192545.jpg" alt="OINANCE Logo">
+    </div>
 
-<header class="header">
+    <div>
+        <h1>OINANCE</h1>
+        <span>MARKETS</span>
+    </div>
 
-    <div class="logo-area">
+</div>
 
-        <div class="logo-image">
-            <img src="IMG_20260916_192545.jpg" alt="OINANCE Logo">
+<nav class="navigation">
+    <a href="index.html">Markets</a>
+    <a href="index.html#crypto">Crypto</a>
+    <a href="index.html#stocks">Stocks</a>
+</nav>
+
+<button class="menu-button">☰</button>
+
+</header><main class="asset-page"><div class="asset-back">
+    <a href="index.html">← Back to Markets</a>
+</div>
+
+
+<!-- ASSET HEADER -->
+
+<section class="asset-hero">
+
+    <div class="asset-heading">
+
+        <div class="large-asset-icon" id="assetIcon">
+            <img id="assetLogo" src="" alt="">
         </div>
 
         <div>
-            <h1>OINANCE</h1>
-            <span>MARKETS</span>
-        </div>
 
-    </div>
+            <p class="asset-type" id="assetType">
+                CRYPTOCURRENCY
+            </p>
 
-    <nav class="navigation">
-        <a href="index.html">Markets</a>
-        <a href="index.html#crypto">Crypto</a>
-        <a href="index.html#stocks">Stocks</a>
-    </nav>
+            <h2 id="assetName">
+                Bitcoin
+            </h2>
 
-    <button class="menu-button">☰</button>
-
-</header>
-
-
-<main class="asset-page">
-
-    <div class="asset-back">
-        <a href="index.html">← Back to Markets</a>
-    </div>
-
-
-    <section class="asset-hero">
-
-        <div class="asset-heading">
-
-            <div class="large-asset-icon" id="assetIcon">
-                B
-            </div>
-
-            <div>
-
-                <p class="asset-type" id="assetType">
-                    CRYPTOCURRENCY
-                </p>
-
-                <h2 id="assetName">
-                    Bitcoin
-                </h2>
-
-                <span class="asset-symbol" id="assetSymbol">
-                    BTC
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="asset-price">
-
-            <strong id="assetPrice">
-                $108,450.00
-            </strong>
-
-            <span id="assetChange" class="positive">
-                +2.41%
+            <span class="asset-symbol" id="assetSymbol">
+                BTC
             </span>
 
         </div>
 
-    </section>
+    </div>
 
 
-    <section class="asset-stats">
+    <div class="asset-price">
 
-        <div class="stat-card">
-            <span>Market Cap</span>
-            <strong id="marketCap">$2.15T</strong>
-        </div>
+        <strong id="assetPrice">
+            $108,450.00
+        </strong>
 
-        <div class="stat-card">
-            <span>24h Volume</span>
-            <strong id="volume">$48.2B</strong>
-        </div>
-
-        <div class="stat-card">
-            <span>24h High</span>
-            <strong id="high">$110,120.00</strong>
-        </div>
-
-        <div class="stat-card">
-            <span>24h Low</span>
-            <strong id="low">$105,840.00</strong>
-        </div>
-
-    </section>
-
-
-    <section class="chart-section">
-
-        <div class="section-heading">
-
-            <div>
-                <p class="eyebrow">PRICE HISTORY</p>
-                <h3>Market Chart</h3>
-            </div>
-
-            <div class="chart-buttons">
-                <button class="chart-button active">1D</button>
-                <button class="chart-button">7D</button>
-                <button class="chart-button">1M</button>
-                <button class="chart-button">1Y</button>
-            </div>
-
-        </div>
-
-
-        <div class="chart-box">
-
-            <div class="chart-placeholder">
-
-                <div class="chart-line"></div>
-
-                <span>
-                    OINANCE MARKET DATA
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="about-asset">
-
-        <div>
-
-            <p class="eyebrow">ABOUT</p>
-
-            <h3 id="aboutTitle">
-                About Bitcoin
-            </h3>
-
-            <p id="aboutText">
-                Bitcoin is a decentralized digital asset designed to enable
-                peer-to-peer transactions without relying on a central
-                financial institution. Bitcoin operates on a blockchain
-                network secured by cryptography and distributed participants.
-            </p>
-
-        </div>
-
-
-        <div class="market-information">
-
-            <p class="eyebrow">MARKET INFORMATION</p>
-
-            <div class="info-row">
-                <span>Rank</span>
-                <strong id="assetRank">#1</strong>
-            </div>
-
-            <div class="info-row">
-                <span>Symbol</span>
-                <strong id="infoSymbol">BTC</strong>
-            </div>
-
-            <div class="info-row">
-                <span>Market</span>
-                <strong id="infoMarket">Crypto</strong>
-            </div>
-
-            <div class="info-row">
-                <span>Status</span>
-                <strong>Active</strong>
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <div class="footer-logo">
-
-        <img src="IMG_20260916_192545.jpg" alt="OINANCE Logo">
-
-        <span>OINANCE</span>
+        <span id="assetChange" class="positive">
+            +2.41%
+        </span>
 
     </div>
 
-    <p>
-        OINANCE Markets is a market information platform being developed by
-        OINANCE Technology.
-    </p>
-
-    <span>
-        © 2026 OINANCE. All rights reserved.
-    </span>
-
-</footer>
+</section>
 
 
-<script src="script.js"></script>
+<!-- MARKET STATISTICS -->
 
-</body>
-  </html>
+<section class="asset-stats">
+
+    <div class="stat-card">
+        <span>Market Cap</span>
+        <strong id="marketCap">$2.15T</strong>
+    </div>
+
+    <div class="stat-card">
+        <span>24h Volume</span>
+        <strong id="volume">$48.2B</strong>
+    </div>
+
+    <div class="stat-card">
+        <span>24h High</span>
+        <strong id="high">$110,120.00</strong>
+    </div>
+
+    <div class="stat-card">
+        <span>24h Low</span>
+        <strong id="low">$105,840.00</strong>
+    </div>
+
+</section>
+
+
+<!-- CHART -->
+
+<section class="chart-section">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="eyebrow">PRICE HISTORY</p>
+            <h3 id="chartTitle">Bitcoin Market Chart</h3>
+        </div>
+
+        <div class="chart-buttons">
+
+            <button class="chart-button active">
+                1D
+            </button>
+
+            <button class="chart-button">
+                7D
+            </button>
+
+            <button class="chart-button">
+                1M
+            </button>
+
+            <button class="chart-button">
+                1Y
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="chart-box">
+
+        <div class="chart-placeholder">
+
+            <div class="chart-line"></div>
+
+            <span>
+                OINANCE MARKET DATA
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about-asset">
+
+    <div>
+
+        <p class="eyebrow">
+            ABOUT
+        </p>
+
+        <h3 id="aboutTitle">
+            About Bitcoin
+        </h3>
+
+        <p id="aboutText">
+            Bitcoin is a decentralized digital asset designed to enable
+            peer-to-peer transactions without relying on a central
+            financial institution. Bitcoin operates on a blockchain
+            network secured by cryptography and distributed participants.
+        </p>
+
+    </div>
+
+
+    <!-- MARKET INFORMATION -->
+
+    <div class="market-information">
+
+        <p class="eyebrow">
+            MARKET INFORMATION
+        </p>
+
+        <div class="info-row">
+            <span>Rank</span>
+            <strong id="assetRank">#1</strong>
+        </div>
+
+        <div class="info-row">
+            <span>Symbol</span>
+            <strong id="infoSymbol">BTC</strong>
+        </div>
+
+        <div class="info-row">
+            <span>Market</span>
+            <strong id="infoMarket">Crypto</strong>
+        </div>
+
+        <div class="info-row">
+            <span>Status</span>
+            <strong>Active</strong>
+        </div>
+
+    </div>
+
+</section>
+
+</main><!-- FOOTER --><footer><div class="footer-logo">
+
+    <img
+        src="IMG_20260916_192545.jpg"
+        alt="OINANCE Logo"
+    >
+
+    <span>OINANCE</span>
+
+</div>
+
+<p>
+    OINANCE Markets is a market information platform being developed by
+    OINANCE Technology.
+</p>
+
+<span>
+    © 2026 OINANCE. All rights reserved.
+</span>
+
+</footer><script src="script.js"></script><!-- ASSET PAGE LOGIC --><script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /*
+     * Get the symbol from the URL.
+     *
+     * Example:
+     * asset.html?symbol=BTC
+     */
+
+    const params = new URLSearchParams(
+        window.location.search
+    );
+
+    const symbol = params.get("symbol");
+
+
+    /*
+     * Stop if no symbol was supplied.
+     */
+
+    if (!symbol) {
+        return;
+    }
+
+
+    /*
+     * Get the market data from script.js.
+     */
+
+    const allAssets = [
+        ...crypto,
+        ...stocks
+    ];
+
+
+    /*
+     * Find the selected asset.
+     */
+
+    const asset = allAssets.find(
+        item =>
+            item[1].toUpperCase() ===
+            symbol.toUpperCase()
+    );
+
+
+    if (!asset) {
+        return;
+    }
+
+
+    /*
+     * Asset information.
+     */
+
+    const name = asset[0];
+    const ticker = asset[1];
+    const price = asset[2];
+    const change = asset[3];
+    const marketCap = asset[4];
+
+
+    /*
+     * Determine whether this is
+     * crypto or a stock.
+     */
+
+    const isCrypto = crypto.some(
+        item =>
+            item[1].toUpperCase() ===
+            ticker.toUpperCase()
+    );
+
+
+    /*
+     * Update page title.
+     */
+
+    document.title =
+        `${name} (${ticker}) | OINANCE Markets`;
+
+
+    /*
+     * Update main information.
+     */
+
+    document.getElementById(
+        "assetName"
+    ).textContent = name;
+
+
+    document.getElementById(
+        "assetSymbol"
+    ).textContent = ticker;
+
+
+    document.getElementById(
+        "assetPrice"
+    ).textContent = price;
+
+
+    document.getElementById(
+        "assetChange"
+    ).textContent = change;
+
+
+    document.getElementById(
+        "marketCap"
+    ).textContent = marketCap;
+
+
+    /*
+     * Positive / negative movement.
+     */
+
+    const changeElement =
+        document.getElementById("assetChange");
+
+
+    changeElement.className =
+        change.startsWith("+")
+            ? "positive"
+            : "negative";
+
+
+    /*
+     * Asset type.
+     */
+
+    document.getElementById(
+        "assetType"
+    ).textContent =
+        isCrypto
+            ? "CRYPTOCURRENCY"
+            : "STOCK";
+
+
+    /*
+     * Market information.
+     */
+
+    document.getElementById(
+        "infoSymbol"
+    ).textContent = ticker;
+
+
+    document.getElementById(
+        "infoMarket"
+    ).textContent =
+        isCrypto
+            ? "Crypto"
+            : "Stock";
+
+
+    /*
+     * About section.
+     */
+
+    document.getElementById(
+        "aboutTitle"
+    ).textContent =
+        `About ${name}`;
+
+
+    /*
+     * Chart title.
+     */
+
+    document.getElementById(
+        "chartTitle"
+    ).textContent =
+        `${name} Market Chart`;
+
+
+    /*
+     * Simple descriptions for major assets.
+     */
+
+    const descriptions = {
+
+        BTC:
+            "Bitcoin is a decentralized digital asset designed to enable peer-to-peer transactions without relying on a central financial institution. Bitcoin operates on a blockchain network secured by cryptography and distributed participants.",
+
+        ETH:
+            "Ethereum is a blockchain platform that supports smart contracts, decentralized applications and the Ethereum digital asset ETH.",
+
+        SOL:
+            "Solana is a blockchain network designed for high-speed transactions and decentralized applications.",
+
+        XRP:
+            "XRP is a digital asset associated with the XRP Ledger, a blockchain designed to facilitate fast and low-cost transactions.",
+
+        DOGE:
+            "Dogecoin is a cryptocurrency originally introduced as a peer-to-peer digital currency.",
+
+        ADA:
+            "Cardano is a blockchain platform designed to support smart contracts and decentralized applications.",
+
+        BNB:
+            "BNB is the native digital asset of the BNB Chain ecosystem and is used across a range of blockchain applications.",
+
+        NVDA:
+            "NVIDIA is a technology company known for graphics processors, accelerated computing and artificial intelligence hardware and software.",
+
+        AAPL:
+            "Apple is a technology company known for consumer electronics, software and digital services.",
+
+        MSFT:
+            "Microsoft is a technology company providing software, cloud computing, productivity products and other digital services.",
+
+        AMZN:
+            "Amazon is a technology and commerce company operating across e-commerce, cloud computing and digital services.",
+
+        TSLA:
+            "Tesla is an electric vehicle and energy technology company."
+    };
+
+
+    if (descriptions[ticker]) {
+
+        document.getElementById(
+            "aboutText"
+        ).textContent =
+            descriptions[ticker];
+
+    }
+
+
+    /*
+     * Asset logo.
+     *
+     * These are CoinGecko logo IDs for
+     * major cryptocurrencies.
+     */
+
+    const cryptoLogoIds = {
+
+        BTC: "1",
+        ETH: "279",
+        USDT: "825",
+        BNB: "825",
+        XRP: "44",
+        SOL: "4128",
+        ADA: "975",
+        DOGE: "5",
+        TRX: "1094",
+        AVAX: "12559",
+        LINK: "877",
+        DOT: "12171",
+        LTC: "2",
+        BCH: "780",
+        UNI: "12504",
+        XLM: "100",
+        HBAR: "4642",
+        ATOM: "1481",
+        FIL: "12817",
+        ARB: "16547",
+        AAVE: "12645",
+        MKR: "1364",
+        NEAR: "10365",
+        APT: "26455",
+        XMR: "69",
+        SUI: "26375",
+        PEPE: "29850"
+    };
+
+
+    const assetLogo =
+        document.getElementById("assetLogo");
+
+
+    /*
+     * Crypto logo.
+     */
+
+    if (
+        isCrypto &&
+        cryptoLogoIds[ticker]
+    ) {
+
+        assetLogo.src =
+            `https://assets.coingecko.com/coins/images/${cryptoLogoIds[ticker]}/large/${ticker.toLowerCase()}.png`;
+
+        assetLogo.alt =
+            `${name} logo`;
+
+        assetLogo.style.display =
+            "block";
+
+    }
+
+
+    /*
+     * If the logo cannot load,
+     * show the ticker initial instead.
+     */
+
+    assetLogo.onerror = function () {
+
+        this.style.display =
+            "none";
+
+        document.getElementById(
+            "assetIcon"
+        ).textContent =
+            ticker.charAt(0);
+
+    };
+
+
+    /*
+     * Rank.
+     *
+     * For now this uses the position
+     * in your existing market arrays.
+     */
+
+    const rank =
+        allAssets.indexOf(asset) + 1;
+
+
+    document.getElementById(
+        "assetRank"
+    ).textContent =
+        `#${rank}`;
+
+
+    /*
+     * Future live API fields.
+     *
+     * These currently remain sample
+     * values until live market data
+     * is connected.
+     */
+
+});
+
+</script></body>
+    </html>
